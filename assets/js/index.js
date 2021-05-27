@@ -1,24 +1,16 @@
 "use strcit";
 
-const [closeBtn, openBtn] = document.querySelectorAll("button");
-const switcher = ({target}) => {
-  const closeElem = target === closeBtn ? closeBtn : openBtn;
-  const openElem = target === closeBtn ? openBtn : closeBtn;
+const btns = document.querySelectorAll("button");
 
-  const closeText = closeElem.textContent;
-  closeElem.textContent = openElem.textContent;
-  openElem.textContent = closeText;
-
-  closeElem.removeEventListener('mouseenter',switcher);
-  openElem.addEventListener('mouseenter',switcher);
-};
-
-const clickHandler = ({target:{textContent}}) =>{
-  alert(textContent);
+for (const btn of btns) {
+  btn.addEventListener(
+    "click",
+    ({
+      target: {
+        dataset: { address },
+      },
+    }) => {
+      console.dir(address);
+    }
+  );
 }
-closeBtn.addEventListener("mouseenter", switcher);
-openBtn.addEventListener("mouseenter", switcher);
-
-
-closeBtn.addEventListener("click", clickHandler);
-openBtn.addEventListener("click", clickHandler);
