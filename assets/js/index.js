@@ -1,16 +1,18 @@
 "use strcit";
 
 const btns = document.querySelectorAll("button");
+const div = document.querySelector("#root");
 
 for (const btn of btns) {
   btn.addEventListener(
     "click",
     ({
       target: {
-        dataset: { address },
+        dataset: { color },
+        parentNode: localDiv,
       },
     }) => {
-      console.dir(address);
+      localDiv.style.backgroundColor = color;
     }
   );
 }
